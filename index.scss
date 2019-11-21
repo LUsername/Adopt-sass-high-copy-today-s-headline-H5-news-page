@@ -1,6 +1,7 @@
 @import './reset.scss';
 $baseFontSize:17px;
 $redColor:#d43d3d;
+$blueColor:#2a90d7;
 $assetsDir:'assets';
 @mixin sectionStyle {
     margin-left: 15px;
@@ -16,6 +17,7 @@ $assetsDir:'assets';
     border: 1px solid $color;
 }
 
+// 标题限行展示
 @mixin line2 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -23,6 +25,23 @@ $assetsDir:'assets';
     display: box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+}
+
+// 清除浮动
+@mixin clearfix {
+    &::after {
+        content: " ";
+        display: block;
+        visibility: hidden;
+        height: 0;
+        clear: both;
+    }
+}
+
+@mixin commonImg {
+    border: none;
+    width: 100%;
+    display: block;
 }
 
 .header {
@@ -85,6 +104,33 @@ $assetsDir:'assets';
         @extend .section_item;
         .title {
             @include line2();
+        }
+        .list_image {
+            margin-top: 10px;
+        }
+        .list_img_holder {
+            float: left;
+            width: 33.33%;
+            height: 80px;
+            img {
+                @include commonImg();
+            }
+        }
+        ul {
+            @include clearfix();
+        }
+    }
+    .image_item {
+        @extend .section_item;
+        .one_image {
+            height: 195px;
+            margin-top: 10px;
+            img {
+                @include commonImg();
+            }
+        }
+        .gg_label {
+            @include hotLabel($blueColor);
         }
     }
 }
