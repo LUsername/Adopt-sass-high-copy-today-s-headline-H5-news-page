@@ -10,6 +10,21 @@ $assetsDir:'assets';
     padding-bottom: 10px;
 }
 
+@mixin hotLabel($color) {
+    font-size: 14px;
+    color: $color;
+    border: 1px solid $color;
+}
+
+@mixin line2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
 .header {
     height: 45px;
     background-color: $redColor;
@@ -59,7 +74,17 @@ $assetsDir:'assets';
             font-size: 14px;
         }
         .item_info {
+            margin-top: 11px;
             @extend .item_info_base;
+        }
+        .stick_label {
+            @include hotLabel($redColor);
+        }
+    }
+    .images_item {
+        @extend .section_item;
+        .title {
+            @include line2();
         }
     }
 }
